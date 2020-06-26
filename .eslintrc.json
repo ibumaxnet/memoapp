@@ -3,7 +3,7 @@
   "plugins": [
     "react",
     "jsx-a11y",
-    "imprt"
+    "import"
   ],
   "parser":"babel-selint"
 }
