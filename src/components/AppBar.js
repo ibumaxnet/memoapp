@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   appbar__ttl: {
     color:'#fefefe',
     fontSize:24,
-marginTop:40,
+    marginTop:40,
   },
 
 });

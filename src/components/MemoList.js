@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
   memolist: {
     flex:1,
     width:'100%',
-    paddingTop:88,
   },
   memolist__item :{
     borderBottomWidth:1,
