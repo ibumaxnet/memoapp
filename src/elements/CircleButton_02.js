@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font';
 import { createIconSet } from '@expo/vector-icons';
 // import fontawsome from '../../assets/fonts/fa-solid-900.ttf';
@@ -12,7 +12,7 @@ const CustomIcon = createIconSet({
 
 class CircleButton extends React.Component {
   state = {
-    fontLoaded: false,
+    fontLoaded: true,
   }
 
   async componentDidMount() {
@@ -20,27 +20,33 @@ class CircleButton extends React.Component {
       'FontAwesome': require('../../assets/fonts/fa-solid-900.ttf'),
        // FontAwesome: fontawsome,
     });
-    this.setState({ fontLoaded: true });
+    this.setState({ fontLoaded: false });
   }
 
   render() {
-    const {name, style, color, onPress} = this.props;
+
+    const {name, style, color} = this.props;
     let bgColor = '#f936c9';
     let textColor = '#fefefe';
     if(color === 'white') {
       bgColor ='#fefefe';
       textColor ='#f936c9';
     }
+
+    if ( this.state.fontLoaded ) {
+      return (
+        <View></View>
+      );
+    }
     return (
-      <TouchableHighlight onPress={onPress}  style={[styles.Circlebutton,style,{backgroundColor:bgColor}]}>
-        <View>
-          {
-            this.state.fontLoaded ? (
-              <CustomIcon name={name} style={[styles.Circlebutton__ttl,style,{color:textColor}]} />
-            ):null
-          }
-        </View>
-      </TouchableHighlight>
+      <View style={[styles.Circlebutton,style,{backgroundColor:bgColor}]}>
+        {
+          this.state.fontLoaded ? (
+            <CustomIcon name={name} style={[styles.Circlebutton__ttl,style,{color:textColor}]} />
+          ):null
+        }
+      </View>
+
     );
   }
 }

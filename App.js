@@ -1,24 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import AppBar from './src/components/AppBar';
-import MemoEditScreen from './src/screens/MemoEditScreen'
+import MemoListScreen from './src/screens/MemoListScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
+import MemoDetailScreen from './src/screens/MemoDetailScreen';
+import MemoEditScreen from './src/screens/MemoEditScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-<AppBar />
-<MemoEditScreen />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingTop:88,
-    backgroundColor: '#fefefe',
+const AppNavigator = createStackNavigator(
+  {
+    MemoList: { screen: MemoListScreen },
+    MemoDetail: { screen: MemoDetailScreen },
+    MemoEdit: { screen: MemoEditScreen },
+    Login: { screen: LoginScreen },
+    SignUp: { screen: SignUpScreen },
   },
-});
+  {
+    defaultNavigationOptions: {
+      headerTitle: 'Memmapp',
+      headerStyle: {
+        backgroundColor: '#265666',
+      },
+      headerTitleStyle: {
+        color: '#fefefe',
+      },
+    },
+  },
+);
+
+export default createAppContainer(AppNavigator);

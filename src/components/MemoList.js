@@ -1,38 +1,34 @@
 import React from 'react';
-import {StyleSheet,Text,View} from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 
 class MemoList extends React.Component {
-  render(){
+  render() {
     return (
 
-<View style={styles.memolist}>
+      <View style={ styles.memolist }>
 
-  <View style={styles.memolist__item}>
-    <Text style={styles.memolist__item__ttl}>タイトル</Text>
-    <Text style={styles.memolist__item__date}>0000/00/00</Text>
-  </View>
+        <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
+          <View style={styles.memolist__item}>
+            <Text style={styles.memolist__item__ttl}>タイトル</Text>
+            <Text style={styles.memolist__item__date}>0000/00/00</Text>
+          </View>
+        </TouchableHighlight>
 
-  <View style={styles.memolist__item}>
-    <Text style={styles.memolist__item__ttl}>タイトル</Text>
-    <Text style={styles.memolist__item__date}>0000/00/00</Text>
-  </View>
+        <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
+          <View style={styles.memolist__item}>
+            <Text style={styles.memolist__item__ttl}>タイトル</Text>
+            <Text style={styles.memolist__item__date}>0000/00/00</Text>
+          </View>
+        </TouchableHighlight>
 
-  <View style={styles.memolist__item}>
-    <Text style={styles.memolist__item__ttl}>タイトル</Text>
-    <Text style={styles.memolist__item__date}>0000/00/00</Text>
-  </View>
+        <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
+          <View style={styles.memolist__item}>
+            <Text style={styles.memolist__item__ttl}>タイトル</Text>
+            <Text style={styles.memolist__item__date}>0000/00/00</Text>
+          </View>
+        </TouchableHighlight>
 
-  <View style={styles.memolist__item}>
-    <Text style={styles.memolist__item__ttl}>タイトル</Text>
-    <Text style={styles.memolist__item__date}>0000/00/00</Text>
-  </View>
-
-  <View style={styles.memolist__item}>
-    <Text style={styles.memolist__item__ttl}>タイトル</Text>
-    <Text style={styles.memolist__item__date}>0000/00/00</Text>
-  </View>
-
-</View>
+        </View>
 
     );
   }
@@ -47,7 +43,7 @@ const styles = StyleSheet.create({
     borderBottomWidth:1,
     borderBottomColor:'#939393',
     backgroundColor:'#efefef',
-height:60,
+height:68,
 padding:12,
   },
   memolist__item__ttl: {
@@ -57,7 +53,6 @@ padding:12,
   memolist__item__date: {
     fontSize:12,
     color:'#363636',
-    paddingTop:4,
   },
 });
 

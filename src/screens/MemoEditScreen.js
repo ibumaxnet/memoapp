@@ -4,30 +4,30 @@ import {StyleSheet,View,TextInput} from 'react-native';
 import CircleButton from '../elements/CircleButton';
 
 class MemoEditScreen extends React.Component {
-  render(){
+  render() {
     return (
       <View style={styles.container}>
         <TextInput multiline style={styles.memoeditinput} value="hihi" />
 
-        <CircleButton name="check" />
+        <CircleButton name="check" onPress={() => {this.props.navigation.navigate('MemoList')}} />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    width:'100%',
+  container: {
+    flex: 1,
+    width: '100%',
   },
-  memoeditinput:{
-    flex:1,
-    width:'100%',
-    color:'#121212',
-    backgroundColor:'#fefefe',
-    padding:16,
-    paddingTop:32,
-    fontSize:16,
+  memoeditinput: {
+    flex: 1,
+    width: '100%',
+    color: '#121212',
+    backgroundColor: '#fefefe',
+    padding: 16,
+    paddingTop: 32,
+    fontSize: 16,
   },
 });
 

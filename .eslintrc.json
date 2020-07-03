@@ -5,5 +5,5 @@
     "jsx-a11y",
     "import"
   ],
-  "parser":"babel-selint"
+  "parser":"babel-eslint"
 }

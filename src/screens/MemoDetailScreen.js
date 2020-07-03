@@ -4,8 +4,8 @@ import {StyleSheet,Text,View} from 'react-native';
 import CircleButton from '../elements/CircleButton';
 
 class MemoDetailScreen extends React.Component {
-	render() {
-		return (
+  render() {
+    return (
 			<View style={styles.container}>
 				<View>
 
@@ -14,11 +14,11 @@ class MemoDetailScreen extends React.Component {
 						<Text style={styles.memoheaderdate}>0000/00/00</Text>
 					</View>
 
-					<View style={styles.memocontent}>
-						<Text>なんでやねん</Text>
+          <View style={styles.memocontent}>
+						<Text style={styles.memoconenttxt}>なんでやねん</Text>
 					</View>
 
-					<CircleButton name="pencil" color="white" style={styles.editbutton} />
+					<CircleButton name="pencil" color="white" onPress={() => {this.props.navigation.navigate('MemoEdit')}}/>
 				</View>
 
 			</View>
@@ -28,14 +28,14 @@ class MemoDetailScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		width:'100%',
-	},
+  container: {
+    flex: 1,
+    width: '100%',
+  },
 
-	memoheader:{
-		justifyContent: 'center',
-		backgroundColor:'#223333',
+  memoheader:{
+    justifyContent: 'center',
+    backgroundColor:'#223333',
 		padding:10,
 		height:100,
 	},
@@ -43,22 +43,22 @@ const styles = StyleSheet.create({
 		color:'#fefefe',
 		fontSize:20,
 		marginBottom:4,
-		fontWeight:'bole',
+		fontWeight:'bold',
 	},
-	memoheaderdate:{
-		color:'#fefefe',
+	memoheaderdate: {
+		color: '#fefefe',
 		fontSize:12,
 		marginBottom:4,
 	},
-	memocontent:{
+	memocontent: {
 		flex:1,
 		padding:20,
 		paddingTop:30,
 		paddingBottom:20,
 		backgroundColor:'#cecece',
 	},
-	editbutton:{
-		top:69,
+  memoconenttxt: {
+		color: '#131313',
 	},
 });
 
