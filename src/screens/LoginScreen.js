@@ -1,14 +1,38 @@
 import React from 'react';
 import {StyleSheet,Text,View,TextInput,TouchableHighlight} from 'react-native';
+import firebase from 'firebase';
 
 class LoginScreen extends React.Component {
-  render(){
-    return(
+  state = {
+    email: '',
+    password: '',
+  }
+
+hadlesubmit() {
+    // this.props.navigator.navigate('MemoList');
+}
+
+  render() {
+    return (
       <View style={styles.container}>
         <Text style={styles.logintext}>ログイン</Text>
-        <TextInput style={styles.inputarea} value="Email Adress" />
-        <TextInput style={styles.inputarea} value="Password" />
-        <TouchableHighlight style={styles.button} title="Send" onPress={() => {}} underlayColor="#c60666">
+        <TextInput
+          style={styles.inputarea}
+          onChangeText={(text) => {this.setState({ email: text}); }}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Email Adress"
+          // value="{this.state.email}"
+        />
+        <TextInput
+          style={styles.inputarea}
+          // value="{this.state.password}"
+          onChangeText={(text) => {this.setState({ password: text}); }}
+          autoCapitalize="none"
+          autoCorrect={false} placeholder="Password"
+          secureTextEntry
+        />
+        <TouchableHighlight style={styles.button} title="Send" onPress={this.hadlesubmit.bind(this)} underlayColor="#c60666">
           <Text style={styles.buttonttl}>ログインする</Text>
         </TouchableHighlight>
       </View>
@@ -18,36 +42,36 @@ class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    width:'100%',
-    padding:24,
+  container: {
+    flex: 1,
+    width: '100%',
+    padding: 24,
   },
-  inputarea:{
-    height:48,
-    backgroundColor:'#dfdfdf',
-    marginBottom:16,
-    borderWidth:1,
-    borderColor:'#b9b9b9',
-    padding:8,
+  inputarea: {
+    height: 48,
+    backgroundColor: '#dfdfdf',
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#b9b9b9',
+    padding: 8,
   },
-  logintext:{
-    alignSelf:'center',
-    fontSize:24,
-    marginBottom:16,
+  logintext: {
+    alignSelf: 'center',
+    fontSize: 24,
+    marginBottom: 16,
   },
-  button:{
-    backgroundColor:'#f936c9',
-    alignItems:'center',
+  button: {
+    backgroundColor: '#f936c9',
+    alignItems: 'center',
     justifyContent: 'center',
-    height:48,
-    borderRadius:6,
-    width:'69%',
-    alignSelf:'center',
+    height: 48,
+    borderRadius: 6,
+    width: '69%',
+    alignSelf: 'center',
   },
-  buttonttl:{
-    color:'#fefefe',
-    fontSize:18,
+  buttonttl: {
+    color: '#fefefe',
+    fontSize: 18,
   },
 });
 

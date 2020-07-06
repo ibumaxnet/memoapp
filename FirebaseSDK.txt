@@ -1,0 +1,23 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBTv3Pgb1wmYrfebUdG1cpOPCV13FI1kY4",
+    authDomain: "memoapp-reactnative.firebaseapp.com",
+    databaseURL: "https://memoapp-reactnative.firebaseio.com",
+    projectId: "memoapp-reactnative",
+    storageBucket: "memoapp-reactnative.appspot.com",
+    messagingSenderId: "1009388538266",
+    appId: "1:1009388538266:web:5f739ca18c3023111e1223",
+    measurementId: "G-NXMCE86LF9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>

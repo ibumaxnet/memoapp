@@ -23,8 +23,8 @@ class MemoDetailScreen extends React.Component {
 
 			</View>
 
-		);
-	}
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -35,31 +35,31 @@ const styles = StyleSheet.create({
 
   memoheader:{
     justifyContent: 'center',
-    backgroundColor:'#223333',
-		padding:10,
-		height:100,
-	},
-	memoheaderttl:{
+    backgroundColor: '#223333',
+    padding: 10,
+    height: 100,
+  },
+  memoheaderttl:{
 		color:'#fefefe',
-		fontSize:20,
-		marginBottom:4,
-		fontWeight:'bold',
+		fontSize: 20,
+		marginBottom: 4,
+		fontWeight: 'bold',
 	},
 	memoheaderdate: {
 		color: '#fefefe',
-		fontSize:12,
-		marginBottom:4,
+		fontSize: 12,
+		marginBottom: 4,
 	},
 	memocontent: {
-		flex:1,
-		padding:20,
-		paddingTop:30,
-		paddingBottom:20,
-		backgroundColor:'#cecece',
+		flex: 1,
+		padding: 20,
+		paddingTop: 30,
+		paddingBottom: 20,
+		backgroundColor: '#cecece',
 	},
   memoconenttxt: {
-		color: '#131313',
-	},
+    color: '#131313',
+  },
 });
 
 export default MemoDetailScreen;
