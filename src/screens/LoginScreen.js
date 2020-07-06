@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet,Text,View,TextInput,TouchableHighlight} from 'react-native';
+
 import firebase from 'firebase';
 
 class LoginScreen extends React.Component {
@@ -8,8 +9,14 @@ class LoginScreen extends React.Component {
     password: '',
   }
 
-hadlesubmit() {
-    // this.props.navigator.navigate('MemoList');
+handlesubmit_login() {
+  firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+  .then((user) => {
+    this.props.navigation.navigate('MemoList');
+  })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
   render() {
@@ -18,21 +25,22 @@ hadlesubmit() {
         <Text style={styles.logintext}>ログイン</Text>
         <TextInput
           style={styles.inputarea}
+          value={this.state.email}
           onChangeText={(text) => {this.setState({ email: text}); }}
           autoCapitalize="none"
           autoCorrect={false}
-          placeholder="Email Adress"
-          // value="{this.state.email}"
+          placeholder="Email Address"
         />
         <TextInput
           style={styles.inputarea}
-          // value="{this.state.password}"
+          value={this.state.password}
           onChangeText={(text) => {this.setState({ password: text}); }}
           autoCapitalize="none"
-          autoCorrect={false} placeholder="Password"
+          autoCorrect={false}
+          placeholder="Password"
           secureTextEntry
         />
-        <TouchableHighlight style={styles.button} title="Send" onPress={this.hadlesubmit.bind(this)} underlayColor="#c60666">
+        <TouchableHighlight style={styles.button} title="Send" onPress={this.handlesubmit_login.bind(this)} underlayColor="#c60666">
           <Text style={styles.buttonttl}>ログインする</Text>
         </TouchableHighlight>
       </View>
