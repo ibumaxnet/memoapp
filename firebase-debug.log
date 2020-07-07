@@ -1,0 +1,16 @@
+[debug] [2020-07-07T06:23:50.289Z] ----------------------------------------------------------------------
+[debug] [2020-07-07T06:23:50.291Z] Command:       /Users/hazbon/.nodebrew/node/v12.16.2/bin/node /Users/hazbon/.nodebrew/current/bin/firebase login
+[debug] [2020-07-07T06:23:50.291Z] CLI Version:   8.4.3
+[debug] [2020-07-07T06:23:50.291Z] Platform:      darwin
+[debug] [2020-07-07T06:23:50.291Z] Node Version:  v12.16.2
+[debug] [2020-07-07T06:23:50.292Z] Time:          Tue Jul 07 2020 15:23:50 GMT+0900 (GMT+09:00)
+[debug] [2020-07-07T06:23:50.293Z] ----------------------------------------------------------------------
+[debug] [2020-07-07T06:23:50.293Z] 
+[info] i  Firebase optionally collects CLI usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
+ 
+[info] i  To change your data collection preference at any time, run `firebase logout` and log in again. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=424735841&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...

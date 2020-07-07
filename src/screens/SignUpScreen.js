@@ -15,7 +15,7 @@ class SignUpScreen extends React.Component {
       this.props.navigation.navigate('MemoList');
     })
       .catch((error) => {
-        console.log(error);
+        console.log('SignIn Error:', error);
       });
           // this.props.navigator.navigate('MemoList');
   }
