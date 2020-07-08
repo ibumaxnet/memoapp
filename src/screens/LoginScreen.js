@@ -14,6 +14,8 @@ handlesubmit_login() {
       .then((user) => {
         console.log('login Success:');
         this.props.navigation.navigate('MemoList', {currentUser:user});
+        // ユーザーデータ渡す場合
+        // this.props.navigation.navigate('MemoList', {currentUser:user});
       })
       .catch((error) => {
         console.log('Login Error:', this.state.password, error);

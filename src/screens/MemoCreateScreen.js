@@ -11,15 +11,21 @@ class MemoEditScreen extends React.Component {
   }
 
   handlePressSave() {
-    const { params } = this.props.navigation.state;
-    const uid = params.currentUser.user.uid;
-
     const firestore = require('firebase');
     require('firebase/firestore');
     const firestoreDB = firebase.firestore();
 
+    // fairebase からユーザーデータを取得
+    const { currentUser } = firebase.auth();
+    const uid = currentUser.uid;
+    // console.log(currentUser);
+    // 送られたパラメータ
+    // const { params } = this.props.navigation.state;
+    // const uid = params.currentUser.user.uid;
+
     firestoreDB.collection(`users/${uid}/memos`).add({
       body: this.state.body,
+      email: currentUser.email,
       createOn: new Date(),
     })
       .then((docRef) => {
@@ -28,6 +34,7 @@ class MemoEditScreen extends React.Component {
       .catch((error) => {
         console.log('DB Error', error);
       });
+      this.props.navigation.navigate('MemoList');
   }
   render() {
     return (

@@ -4,14 +4,27 @@ import { StyleSheet,Text,View } from 'react-native';
 import MemoList from '../components/MemoList';
 import CircleButton from '../elements/CircleButton';
 
+import firebase from 'firebase';
+
 class MemoListScreen extends React.Component {
 
+  componentDidMount() {
+    const { currentUser } = firebase.auth();
+    // const firestoreDB = firebase.firestore();
+    firestoreDB.collection(`users/${uid}/memos`).add({
+    console.log('did mount!!:', currentUser);
+  }
+
   handlePressCreate() {
-    const { params } = this.props.navigation.state;
-    // console.log('parametar:', params);
-    const user = params.currentUser;
-    console.log('UID:', user);
-    this.props.navigation.navigate('MemoCreate', {currentUser:user});
+    // ユーザーデータ渡す場合
+    // const { params } = this.props.navigation.state;
+    // console.log('parameter:', params);
+    // const user = params.currentUser;
+    // console.log('UID:', params.currentUser.user.email);
+    // this.props.navigation.navigate('MemoCreate', {currentUser:user});
+
+    // 画面遷移
+    this.props.navigation.navigate('MemoCreate');
   }
 
   render() {
