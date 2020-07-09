@@ -1,34 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, FlatList } from 'react-native';
 
 class MemoList extends React.Component {
+
+  renderMemo({item}) {
+    console.log(item);
+    return(
+      <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
+        <View style={styles.memolist__item}>
+          <Text style={styles.memolist__item__ttl}>{item.body}</Text>
+          <Text style={styles.memolist__item__date}></Text>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
   render() {
+    // console.log(this.props.memoList);
+
     return (
 
       <View style={ styles.memolist }>
+        <FlatList data={this.props.memoList} renderItem={this.renderMemo.bind(this)} />
 
-        <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
-          <View style={styles.memolist__item}>
-            <Text style={styles.memolist__item__ttl}>タイトル</Text>
-            <Text style={styles.memolist__item__date}>0000/00/00</Text>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
-          <View style={styles.memolist__item}>
-            <Text style={styles.memolist__item__ttl}>タイトル</Text>
-            <Text style={styles.memolist__item__date}>0000/00/00</Text>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight onPress={() => {this.props.navigation.navigate('MemoDetail');}}>
-          <View style={styles.memolist__item}>
-            <Text style={styles.memolist__item__ttl}>タイトル</Text>
-            <Text style={styles.memolist__item__date}>0000/00/00</Text>
-          </View>
-        </TouchableHighlight>
-
-        </View>
+      </View>
 
     );
   }

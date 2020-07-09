@@ -12,7 +12,7 @@ class MemoEditScreen extends React.Component {
 
   handlePressSave() {
     const firestore = require('firebase');
-    require('firebase/firestore');
+    // require('firebase/firestore');
     const firestoreDB = firebase.firestore();
 
     // fairebase からユーザーデータを取得
@@ -23,11 +23,12 @@ class MemoEditScreen extends React.Component {
     // const { params } = this.props.navigation.state;
     // const uid = params.currentUser.user.uid;
 
-    firestoreDB.collection(`users/${uid}/memos`).add({
-      body: this.state.body,
-      email: currentUser.email,
-      createOn: new Date(),
-    })
+    firestoreDB.collection(`users/${uid}/memos`)
+      .add({
+        body: this.state.body,
+        email: currentUser.email,
+        createOn: new Date(),
+      })
       .then((docRef) => {
         console.log('Document written with ID: ', docRef.id);
       })

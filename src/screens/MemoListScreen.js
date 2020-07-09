@@ -8,11 +8,31 @@ import firebase from 'firebase';
 
 class MemoListScreen extends React.Component {
 
+  state = {
+    memoList: [],
+  }
+
   componentDidMount() {
+    const firestore = require('firebase');
+    require('firebase/firestore');
+    const firestoreDB = firebase.firestore();
     const { currentUser } = firebase.auth();
-    // const firestoreDB = firebase.firestore();
-    firestoreDB.collection(`users/${uid}/memos`).add({
-    console.log('did mount!!:', currentUser);
+    const uid = currentUser.uid;
+
+    firestoreDB.collection(`users/${uid}/memos`)
+      .get()
+      .then((querySnapshot) => {
+        const memoListTmp = [];
+        querySnapshot.forEach((doc) => {
+          // console.log(`${doc.id} => ${doc.data()}`);
+          // console.log(doc.data());
+          memoListTmp.push({ ...doc.data(), key: doc.id});
+        });
+        this.setState({ memoList: memoListTmp});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   handlePressCreate() {
@@ -31,7 +51,7 @@ class MemoListScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-        <MemoList navigation={this.props.navigation} />
+        <MemoList memoList ={this.state.memoList} navigation={this.props.navigation} />
         <CircleButton name="plus" onPress={this.handlePressCreate.bind(this)} />
 
       </View>
