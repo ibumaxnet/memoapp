@@ -7,7 +7,6 @@ import CircleButton from '../elements/CircleButton';
 import firebase from 'firebase';
 
 class MemoListScreen extends React.Component {
-
   state = {
     memoList: [],
   }
@@ -52,7 +51,10 @@ class MemoListScreen extends React.Component {
       <View style={styles.container}>
 
         <MemoList memoList ={this.state.memoList} navigation={this.props.navigation} />
-        <CircleButton name="plus" onPress={this.handlePressCreate.bind(this)} />
+        <CircleButton
+          name="plus"
+          onPress={this.handlePressCreate.bind(this)}
+        />
 
       </View>
 

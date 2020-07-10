@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet,View,TextInput} from 'react-native';
 
+import firebase from 'firebase';
 import CircleButton from '../elements/CircleButton';
 
-import firebase from 'firebase';
 
 class MemoEditScreen extends React.Component {
   state = {
