@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,Text,View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import CircleButton from '../elements/CircleButton';
 
@@ -24,6 +24,11 @@ class MemoDetailScreen extends React.Component {
     // console.log('memoItem:', params);
   }
 
+  returnMemo(memoItem) {
+    this.setState({ memoItem:memoItem.memoItem });
+    console.log('returnMemo-memoItem:', this.state.memoItem);
+  }
+
   render() {
     const { memoItem } = this.state;
     if (memoItem == null) { return null; }
@@ -41,11 +46,11 @@ class MemoDetailScreen extends React.Component {
 						<Text style={styles.memoconenttxt}>{memoItem.body}</Text>
 					</View>
 
-					<CircleButton
+          <CircleButton
             name="pencil"
             style={styles.editbutton}
             color="white"
-            onPress={() => {this.props.navigation.navigate('MemoEdit', { memo:memoItem });}}
+            onPress={() => {this.props.navigation.navigate('MemoEdit', { ...{ memoItem: memoItem }, returnMemo: this.returnMemo.bind(this) }); }}
           />
 				</View>
 

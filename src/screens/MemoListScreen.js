@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet,Text,View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import firebase from 'firebase';
 
 import MemoList from '../components/MemoList';
 import CircleButton from '../elements/CircleButton';
-
-import firebase from 'firebase';
 
 class MemoListScreen extends React.Component {
   state = {
@@ -16,22 +16,32 @@ class MemoListScreen extends React.Component {
     require('firebase/firestore');
     const firestoreDB = firebase.firestore();
     const { currentUser } = firebase.auth();
-    const uid = currentUser.uid;
+    const { uid } = currentUser;
 
     firestoreDB.collection(`users/${uid}/memos`)
-      .get()
-      .then((querySnapshot) => {
-        const memoListTmp = [];
-        querySnapshot.forEach((doc) => {
-          // console.log(`${doc.id} => ${doc.data()}`);
-          // console.log(doc.data());
-          memoListTmp.push({ ...doc.data(), key: doc.id});
-        });
-        this.setState({ memoList: memoListTmp});
+      .onSnapshot((snapShot) => {
+          const memoListTmp = [];
+          snapShot.forEach((doc) => {
+            // console.log(`${doc.id} => ${doc.data()}`);
+            // console.log(doc.data());
+            memoListTmp.push({ ...doc.data(), key: doc.id });
+          });
+          this.setState({ memoList: memoListTmp });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      // getの場合
+      // .get()
+      // .then((querySnapshot) => {
+      //   const memoListTmp = [];
+      //   querySnapshot.forEach((doc) => {
+      //     // console.log(`${doc.id} => ${doc.data()}`);
+      //     // console.log(doc.data());
+      //     memoListTmp.push({ ...doc.data(), key: doc.id });
+      //   });
+      //   this.setState({ memoList: memoListTmp });
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
   }
 
   handlePressCreate() {
@@ -50,7 +60,7 @@ class MemoListScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-        <MemoList memoList ={this.state.memoList} navigation={this.props.navigation} />
+        <MemoList memoList = {this.state.memoList} navigation={this.props.navigation} />
         <CircleButton
           name="plus"
           onPress={this.handlePressCreate.bind(this)}

@@ -1,27 +1,40 @@
 import React from 'react';
-import {StyleSheet,Text,View,TextInput,TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 import firebase from 'firebase';
 
 class LoginScreen extends React.Component {
   state = {
-    email: 'user1@exe.com',
-    password: 'password',
+    email: '',
+    password: '',
   }
 
 handlesubmit_login() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((user) => {
+      .then(() => {
         console.log('login Success:');
-        this.props.navigation.navigate('MemoList', {currentUser:user});
+
         // ユーザーデータ渡す場合
         // this.props.navigation.navigate('MemoList', {currentUser:user});
+
+        // スクリーン履歴をリセット
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [
+              NavigationActions.navigate({ routeName: 'MemoList' }),
+          ],
+        });
+        this.props.navigation.dispatch(resetAction);
       })
       .catch((error) => {
         console.log('Login Error:', this.state.password, error);
       });
 }
 
+handlePress_Signup() {
+  this.props.navigation.navigate('SignUp');
+}
   render() {
     return (
       <View style={styles.container}>
@@ -46,6 +59,9 @@ handlesubmit_login() {
         <TouchableHighlight style={styles.button} title="Send" onPress={this.handlesubmit_login.bind(this)} underlayColor="#c60666">
           <Text style={styles.buttonttl}>ログインする</Text>
         </TouchableHighlight>
+        <TouchableOpacity style={styles.signupbutton} onPress={this.handlePress_Signup.bind(this)}>
+          <Text style={styles.signupbutton__text}>メンバー登録する</Text>
+        </TouchableOpacity>
       </View>
 
     );
@@ -83,6 +99,13 @@ const styles = StyleSheet.create({
   buttonttl: {
     color: '#fefefe',
     fontSize: 18,
+  },
+  signupbutton: {
+    marginTop: 22,
+    alignItems: 'center',
+  },
+  signupbutton__text: {
+    fontSize: 16,
   },
 });
 

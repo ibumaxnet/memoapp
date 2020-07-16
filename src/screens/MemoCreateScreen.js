@@ -35,7 +35,8 @@ class MemoEditScreen extends React.Component {
       .catch((error) => {
         console.log('DB Error', error);
       });
-      this.props.navigation.navigate('MemoList');
+      this.props.navigation.goBack();
+      // this.props.navigation.navigate('MemoList');
   }
   render() {
     return (
