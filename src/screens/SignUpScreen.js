@@ -28,9 +28,9 @@ class SignUpScreen extends React.Component {
           style={styles.inputarea}
           value={this.state.email}
           onChangeText={(text) => {this.setState({ email:text}); }}
-          autoCapitalize="none"
+          autoCapitalize='none'
           autoCorrect={false}
-          placeholder="Email Address"
+          placeholder='Email Address'
         />
         <TextInput
           style={styles.inputarea} value="Password"

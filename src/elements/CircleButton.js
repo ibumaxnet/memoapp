@@ -24,7 +24,6 @@ class CircleButton extends React.Component {
   }
 
   render() {
-
     const { name, style, color, onPress} = this.props;
     let bgColor = '#f936c9';
     let textColor = '#fefefe';
@@ -63,7 +62,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.4,
     shadowRadius: 3,
-    elevation: 4,// andoroid で影
+    elevation: 4, // andoroid で影
   },
   Circlebutton__ttl: {
     fontSize: 24,

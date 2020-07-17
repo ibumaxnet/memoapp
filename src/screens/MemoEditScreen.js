@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, Keyboard } from 'react-native';
 
 import firebase from 'firebase';
 import CircleButton from '../elements/CircleButton';
@@ -54,6 +54,7 @@ class MemoEditScreen extends React.Component {
           value={this.state.memoData.body}
           // textAlignVertical='top'
           onChangeText={(text) => {this.setState({ memoData: { body: text, key: this.state.memoData.key}});}}
+          onSubmitEditing={Keyboard.dismiss}
         />
 
         <CircleButton
