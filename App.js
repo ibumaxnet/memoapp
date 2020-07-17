@@ -1,6 +1,7 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { Platform } from 'react-native';
 
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
@@ -38,9 +39,25 @@ const AppNavigator = createStackNavigator(
       headerTitle: 'Memmapp',
       headerStyle: {
         backgroundColor: '#265666',
+        height: 88,
+
+        ...Platform.select({
+          ios: {
+            shadowColor: '#010101',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.4,
+            shadowRadius: 3,
+          },
+          android: {
+                // backgroundColor: 'red',
+            elevation: 4,// andoroid で影
+          },
+        })
+
       },
       headerTitleStyle: {
         color: '#fefefe',
+        paddingTop: 2,
       },
       headerTintColor: '#fefefe',
       headerBackTitle: null,

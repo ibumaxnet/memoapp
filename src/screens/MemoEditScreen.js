@@ -52,6 +52,7 @@ class MemoEditScreen extends React.Component {
           multiline
           style={styles.memoeditinput}
           value={this.state.memoData.body}
+          // textAlignVertical='top'
           onChangeText={(text) => {this.setState({ memoData: { body: text, key: this.state.memoData.key}});}}
         />
 
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 32,
     fontSize: 16,
+    textAlignVertical: 'top',
   },
 });
 

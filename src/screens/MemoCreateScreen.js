@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 32,
     fontSize: 16,
+    textAlignVertical: 'top',
   },
 });
 

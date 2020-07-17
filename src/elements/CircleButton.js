@@ -24,12 +24,13 @@ class CircleButton extends React.Component {
   }
 
   render() {
-    const {name, style, color, onPress} = this.props;
+
+    const { name, style, color, onPress} = this.props;
     let bgColor = '#f936c9';
     let textColor = '#fefefe';
-    if(color === 'white') {
-      bgColor ='#fefefe';
-      textColor ='#f936c9';
+    if (color === 'white') {
+      bgColor = '#fefefe';
+      textColor = '#f936c9';
     }
     return (
       <TouchableHighlight onPress={onPress}  style={[styles.Circlebutton,style,{backgroundColor:bgColor}]}>
@@ -59,9 +60,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#010101',
-    shadowOffset: { width: 0, height: 0 },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.4,
     shadowRadius: 3,
+    elevation: 4,// andoroid で影
   },
   Circlebutton__ttl: {
     fontSize: 24,
