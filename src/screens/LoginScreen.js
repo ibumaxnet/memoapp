@@ -1,6 +1,9 @@
 import React from 'react';
+import * as SecureStore from 'expo-secure-store';
+
 import { StyleSheet, Text, View, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
+import Loading from '../elements/Loading';
 
 import firebase from 'firebase';
 
@@ -10,24 +13,50 @@ class LoginScreen extends React.Component {
     password: '',
   }
 
+  async componentDidMount() {
+    const email = await SecureStore.getItemAsync('email');
+    const password = await SecureStore.getItemAsync('password');
+    console.log('securestore data:', email, password);
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log('noinput login Success:');
+
+        // ユーザーデータ渡す場合
+        // this.props.navigation.navigate('MemoList', {currentUser:user});
+        this.navigationToHome();
+    })
+    .catch((data) => {
+      console.log('logindata:', data);
+    });
+  }
+
+  navigationToHome() {
+    // スクリーン履歴をリセット
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [
+          NavigationActions.navigate({ routeName: 'MemoList' }),
+      ],
+    });
+    this.props.navigation.dispatch(resetAction);
+  }
+
 handlesubmit_login() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
         console.log('login Success:');
+        SecureStore.setItemAsync('email', this.state.email);
+        SecureStore.setItemAsync('password', this.state.password);
 
         // ユーザーデータ渡す場合
         // this.props.navigation.navigate('MemoList', {currentUser:user});
-
-        // スクリーン履歴をリセット
-        const resetAction = StackActions.reset({
-          index: 0,
-          actions: [
-              NavigationActions.navigate({ routeName: 'MemoList' }),
-          ],
-        });
-        this.props.navigation.dispatch(resetAction);
+        this.navigationToHome();
       })
       .catch((error) => {
+        SecureStore.getItemAsync('email')
+        .then((data) => {
+          console.log('input Login data:', data);
+        });
         console.log('Login Error:', this.state.password, error);
       });
 }
@@ -38,6 +67,7 @@ handlePress_Signup() {
   render() {
     return (
       <View style={styles.container}>
+        <Loading text='ロード中です' isLoading={true} />
         <Text style={styles.logintext}>ログイン</Text>
         <TextInput
           style={styles.inputarea}
