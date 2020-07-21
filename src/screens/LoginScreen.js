@@ -11,6 +11,7 @@ class LoginScreen extends React.Component {
   state = {
     email: '',
     password: '',
+    isLoading: true,
   }
 
   async componentDidMount() {
@@ -20,14 +21,15 @@ class LoginScreen extends React.Component {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('noinput login Success:');
+        this.setState({ isLoading: false });
 
         // ユーザーデータ渡す場合
         // this.props.navigation.navigate('MemoList', {currentUser:user});
         this.navigationToHome();
-    })
-    .catch((data) => {
-      console.log('logindata:', data);
-    });
+      })
+      .catch((data) => {
+        console.log('logindata:', data);
+      });
   }
 
   navigationToHome() {
